@@ -1,0 +1,127 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Experience from '../components/Experience.astro';
+import Projects from '../components/Projects.astro';
+import Skills from '../components/Skills.astro';
+import Education from '../components/Education.astro';
+import Footer from '../components/Footer.astro';
+---
+<Base>
+  <div
+    data-progress
+    class="fixed top-0 left-0 h-[2px] w-full origin-left scale-x-0 z-[60] bg-gradient-to-r from-cyan to-emerald"
+    aria-hidden="true"
+  ></div>
+
+  <Nav />
+
+  <main>
+    <Hero />
+    <About />
+    <Experience />
+    <Projects />
+    <Skills />
+    <Education />
+  </main>
+
+  <Footer />
+
+  <script>
+    /* ---------- Scroll progress + nav state ---------- */
+    const bar = document.querySelector<HTMLElement>('[data-progress]');
+    const nav = document.getElementById('nav');
+
+    const onScroll = () => {
+      const el = document.documentElement;
+      const max = el.scrollHeight - el.clientHeight;
+      const p = max > 0 ? el.scrollTop / max : 0;
+      if (bar) bar.style.transform = `scaleX(${p})`;
+      nav?.classList.toggle('is-scrolled', el.scrollTop > 40);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+
+    /* ---------- Reveal on scroll ---------- */
+    const reveals = document.querySelectorAll('[data-reveal]');
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-visible');
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
+    );
+    reveals.forEach((el) => io.observe(el));
+
+    /* ---------- Active nav link ---------- */
+    const sections = Array.from(document.querySelectorAll<HTMLElement>('section[id]'));
+    const navLinks = Array.from(document.querySelectorAll<HTMLElement>('[data-nav-link]'));
+
+    const setActive = () => {
+      const probe = window.scrollY + window.innerHeight * 0.35;
+      let current = '';
+      for (const s of sections) {
+        if (s.offsetTop <= probe) current = s.id;
+      }
+      navLinks.forEach((l) => {
+        const on = l.dataset.navLink === current;
+        l.classList.toggle('is-active', on);
+        l.classList.toggle('text-ink', on);
+        l.classList.toggle('text-muted', !on);
+      });
+    };
+    setActive();
+    window.addEventListener('scroll', setActive, { passive: true });
+
+    /* ---------- Terminal typing ---------- */
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const term = document.querySelector<HTMLElement>('[data-terminal]');
+
+    if (term) {
+      const lines = Array.from(term.querySelectorAll<HTMLElement>('.term-line'));
+      const texts = lines.map((l) => l.dataset.text ?? '');
+
+      const finish = () => {
+        lines.forEach((l, i) => (l.textContent = texts[i]));
+        term.classList.add('term-done');
+      };
+
+      if (prefersReduced) {
+        finish();
+      } else {
+        lines.forEach((l) => (l.textContent = ''));
+        let li = 0;
+
+        const typeLine = () => {
+          if (li >= lines.length) {
+            term.classList.add('term-done');
+            return;
+          }
+          const el = lines[li];
+          const txt = texts[li];
+          let ci = 0;
+
+          const tick = () => {
+            el.textContent = txt.slice(0, ++ci);
+            if (ci < txt.length) {
+              window.setTimeout(tick, 22 + Math.random() * 28);
+            } else {
+              li += 1;
+              window.setTimeout(typeLine, 240);
+            }
+          };
+          tick();
+        };
+
+        window.setTimeout(typeLine, 520);
+      }
+    }
+  </script>
+</Base>

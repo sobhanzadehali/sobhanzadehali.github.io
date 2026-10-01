@@ -1,0 +1,65 @@
+---
+const projects = [
+  {
+    name: 'toomar',
+    tag: 'Python · Logging',
+    desc: 'A lightweight, high-performance Python logger with zero third-party dependencies — built for low-overhead logging in high-throughput services.',
+    href: 'https://github.com/sobhanzadehali/toomar',
+  },
+  {
+    name: 'LocalTokenizerUtil',
+    tag: 'Python · NLP',
+    desc: 'A tokenizer utility library for using locally downloaded Hugging Face and Jina tokenizers for token counting, text tokenization, and text chunking.',
+    href: 'https://github.com/sobhanzadehali/LocalTokenizerUtil',
+  },
+];
+---
+<section id="projects" class="relative py-28 sm:py-36">
+  <div class="mx-auto max-w-5xl px-6">
+    <div data-reveal class="mb-14">
+      <span class="font-mono text-xs tracking-[0.2em] text-cyan">03</span>
+      <h2 class="font-display text-3xl sm:text-4xl font-semibold tracking-tight mt-2">Projects</h2>
+      <div class="mt-5 h-px w-16 bg-gradient-to-r from-cyan to-emerald"></div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-5">
+      {projects.map((p, i) => (
+        <a
+          href={p.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-reveal
+          style={`--d:${i * 110}ms`}
+          class="group relative flex flex-col rounded-2xl border border-line bg-surface/50 p-7 overflow-hidden transition-all duration-300 hover:border-cyan/40 hover:-translate-y-0.5"
+        >
+          <div
+            class="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            style="background: linear-gradient(115deg, transparent 30%, rgba(34,211,238,0.08) 50%, transparent 70%);"
+            aria-hidden="true"
+          ></div>
+
+          <div class="relative flex items-start justify-between gap-4">
+            <div>
+              <h3 class="font-display text-lg font-semibold group-hover:text-cyan transition-colors">
+                {p.name}
+              </h3>
+              <p class="mt-1.5 font-mono text-[11px] text-faint">{p.tag}</p>
+            </div>
+            <span
+              class="text-faint group-hover:text-cyan transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              aria-hidden="true"
+            >↗</span>
+          </div>
+
+          <p class="relative mt-5 text-sm text-muted leading-relaxed flex-1">
+            {p.desc}
+          </p>
+
+          <div class="relative mt-6 pt-5 border-t border-line/70 font-mono text-[11px] text-faint">
+            github.com/sobhanzadehali/{p.name}
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

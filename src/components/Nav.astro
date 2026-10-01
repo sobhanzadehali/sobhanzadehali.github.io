@@ -1,0 +1,44 @@
+---
+const links = [
+  { href: '#about', label: 'About', id: 'about' },
+  { href: '#experience', label: 'Experience', id: 'experience' },
+  { href: '#projects', label: 'Projects', id: 'projects' },
+  { href: '#skills', label: 'Stack', id: 'skills' },
+  { href: '#education', label: 'Education', id: 'education' },
+];
+---
+<header
+  id="nav"
+  class="fixed top-0 inset-x-0 z-50 border-b border-transparent transition-all duration-300"
+>
+  <div class="mx-auto max-w-5xl px-6 h-16 flex items-center justify-between">
+    <a
+      href="#top"
+      class="font-mono text-sm tracking-tight text-ink/90 hover:text-cyan transition-colors"
+      aria-label="Back to top"
+    >
+      <span class="text-cyan">SZ</span><span class="text-faint">.</span>
+    </a>
+
+    <nav class="hidden sm:flex items-center gap-1" aria-label="Sections">
+      {links.map((l) => (
+        <a
+          href={l.href}
+          data-nav-link={l.id}
+          class="relative px-3 py-2 text-sm text-muted hover:text-ink transition-colors"
+        >
+          {l.label}
+        </a>
+      ))}
+    </nav>
+
+    <a
+      href="https://github.com/sobhanzadehali"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="font-mono text-xs sm:text-sm text-muted hover:text-cyan transition-colors"
+    >
+      GitHub <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+</header>

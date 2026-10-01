@@ -1,0 +1,47 @@
+---
+const bullets = [
+  'Developed and maintained backend services for OCR, ASR, RAG, and AI-powered applications — designing and implementing REST APIs and integrating internal and third-party services.',
+  'Optimized SQL queries and backend data-access patterns across multiple services, achieving at least <strong class="text-ink font-medium">2× faster</strong> response times for key API endpoints.',
+  'Redesigned the architecture of an agentic chatbot built with LangChain and LangGraph, decoupling core application logic from framework-specific implementations and third-party packages to improve extensibility and maintainability.',
+  'Re-engineered the chatbot backend from synchronous to asynchronous execution — REST APIs, database operations, and LLM integrations — improving concurrency and scalability under concurrent workloads.',
+  'Parallelized independent LLM tool calls in the chatbot execution pipeline, achieving up to <strong class="text-ink font-medium">4× faster</strong> response times for workflows involving multiple tool calls.',
+  'Designed and developed an extensible platform that enables office automation services to provide agentic chatbot capabilities across different document sources and business workflows.',
+];
+---
+<section id="experience" class="relative py-28 sm:py-36">
+  <div class="mx-auto max-w-5xl px-6">
+    <div data-reveal class="mb-14">
+      <span class="font-mono text-xs tracking-[0.2em] text-cyan">02</span>
+      <h2 class="font-display text-3xl sm:text-4xl font-semibold tracking-tight mt-2">Experience</h2>
+      <div class="mt-5 h-px w-16 bg-gradient-to-r from-cyan to-emerald"></div>
+    </div>
+
+    <article
+      data-reveal
+      class="relative rounded-2xl border border-line bg-surface/50 p-7 sm:p-9 overflow-hidden"
+    >
+      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan/40 to-transparent"></div>
+
+      <div class="flex flex-wrap items-baseline justify-between gap-3">
+        <div>
+          <h3 class="font-display text-xl font-semibold">Backend Developer</h3>
+          <p class="mt-1 text-sm text-cyan">Roshan</p>
+        </div>
+        <span class="font-mono text-xs text-faint">Apr 2025 — Present</span>
+      </div>
+
+      <ul class="mt-8 space-y-4">
+        {bullets.map((b, i) => (
+          <li
+            data-reveal
+            style={`--d:${i * 70}ms`}
+            class="flex gap-3 text-sm text-muted leading-relaxed"
+          >
+            <span class="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-cyan" aria-hidden="true"></span>
+            <span set:html={b} />
+          </li>
+        ))}
+      </ul>
+    </article>
+  </div>
+</section>

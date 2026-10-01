@@ -1,0 +1,40 @@
+---
+const year = new Date().getFullYear();
+const links = [
+  { label: 'sobhan.za47@gmail.com', href: 'mailto:sobhan.za47@gmail.com' },
+  { label: 'GitHub', href: 'https://github.com/sobhanzadehali' },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/sobhan-zadehali' },
+];
+---
+<footer class="relative border-t border-line/70 py-14">
+  <div class="mx-auto max-w-5xl px-6">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8">
+      <div>
+        <a href="#top" class="font-mono text-sm text-ink/90 hover:text-cyan transition-colors">
+          <span class="text-cyan">SZ</span><span class="text-faint">.</span>
+        </a>
+        <p class="mt-3 text-xs text-faint max-w-xs leading-relaxed">
+          Backend Developer · Python &amp; Go · AI-powered systems
+        </p>
+      </div>
+
+      <nav class="flex flex-wrap items-center gap-x-6 gap-y-3" aria-label="Contact">
+        {links.map((l) => (
+          <a
+            href={l.href}
+            target={l.href.startsWith('http') ? '_blank' : undefined}
+            rel={l.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+            class="font-mono text-xs text-muted hover:text-cyan transition-colors"
+          >
+            {l.label}
+          </a>
+        ))}
+      </nav>
+    </div>
+
+    <div class="mt-10 pt-6 border-t border-line/50 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+      <p class="font-mono text-[11px] text-faint">© {year} Sobhan Zadehali</p>
+      <p class="font-mono text-[11px] text-faint">Built with Astro</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,45 @@
+---
+const stats = [
+  { value: '2+', label: 'years backend' },
+  { value: '4×', label: 'faster LLM pipelines' },
+  { value: '2×', label: 'faster API endpoints' },
+];
+---
+<section id="about" class="relative py-28 sm:py-36">
+  <div class="mx-auto max-w-5xl px-6">
+    <div data-reveal class="mb-14">
+      <span class="font-mono text-xs tracking-[0.2em] text-cyan">01</span>
+      <h2 class="font-display text-3xl sm:text-4xl font-semibold tracking-tight mt-2">About</h2>
+      <div class="mt-5 h-px w-16 bg-gradient-to-r from-cyan to-emerald"></div>
+    </div>
+
+    <div class="max-w-2xl space-y-5 text-muted leading-relaxed">
+      <p data-reveal style="--d:80ms">
+        I'm a backend developer with 2+ years of experience building and maintaining
+        services in Python and Go. I care about the parts that don't show up in a demo —
+        query plans, concurrency models, and whether the thing is still maintainable six
+        months from now.
+      </p>
+      <p data-reveal style="--d:160ms">
+        Lately I've been working on AI-powered systems — OCR, ASR, RAG, and agentic
+        applications — mostly on the backend side: designing REST APIs, wiring LLM
+        pipelines, and making them fast enough to actually ship.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-3 gap-4 mt-12">
+      {stats.map((s, i) => (
+        <div
+          data-reveal
+          style={`--d:${200 + i * 80}ms`}
+          class="rounded-xl border border-line bg-surface/50 p-5 transition-colors hover:border-cyan/30"
+        >
+          <div class="font-display text-3xl font-semibold bg-gradient-to-r from-cyan to-emerald bg-clip-text text-transparent">
+            {s.value}
+          </div>
+          <div class="mt-1 font-mono text-xs text-muted">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
