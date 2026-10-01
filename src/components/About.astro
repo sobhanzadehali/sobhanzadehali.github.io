@@ -1,6 +1,10 @@
 ---
+import { getExperienceDuration } from '../lib/experience';
+
+const exp = getExperienceDuration();
+
 const stats = [
-  { value: '2+', label: 'years backend' },
+  { value: exp.shortValue, label: exp.shortLabel },
   { value: '4×', label: 'faster LLM pipelines' },
   { value: '2×', label: 'faster API endpoints' },
 ];
@@ -15,10 +19,10 @@ const stats = [
 
     <div class="max-w-2xl space-y-5 text-muted leading-relaxed">
       <p data-reveal style="--d:80ms">
-        I'm a backend developer with 2+ years of experience building and maintaining
-        services in Python and Go. I care about the parts that don't show up in a demo —
-        query plans, concurrency models, and whether the thing is still maintainable six
-        months from now.
+        I'm a backend developer with {exp.longDisplay} of experience building and
+        maintaining services in Python and Go. I care about the parts that don't show up
+        in a demo — query plans, concurrency models, and whether the thing is still
+        maintainable six months from now.
       </p>
       <p data-reveal style="--d:160ms">
         Lately I've been working on AI-powered systems — OCR, ASR, RAG, and agentic
