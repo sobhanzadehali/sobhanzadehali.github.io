@@ -11,15 +11,30 @@
 
       <!-- Left -->
       <div>
-        <div
-          data-reveal
-          class="inline-flex items-center gap-2 rounded-full border border-line bg-surface/60 px-3 py-1.5 mb-8"
-        >
-          <span class="relative flex h-2 w-2">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald opacity-60"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald"></span>
-          </span>
-          <span class="font-mono text-[11px] text-muted">available for backend work</span>
+        <!-- Avatar + status pill -->
+        <div data-reveal class="flex items-center gap-4 mb-8">
+          <div class="relative shrink-0">
+            <!-- gradient ring -->
+            <div class="absolute -inset-[3px] rounded-full bg-gradient-to-br from-cyan to-emerald opacity-80"></div>
+            <img
+              src="https://github.com/sobhanzadehali.png?size=400"
+              alt="Sobhan Zadehali"
+              width="80"
+              height="80"
+              loading="eager"
+              decoding="async"
+              referrerpolicy="no-referrer"
+              class="relative h-20 w-20 rounded-full object-cover border-[3px] border-bg"
+            />
+            <!-- online dot -->
+            <span class="absolute bottom-0.5 right-0.5 h-4 w-4 rounded-full bg-emerald border-2 border-bg" aria-hidden="true"></span>
+          </div>
+
+          <div
+            class="inline-flex items-center gap-2 rounded-full border border-line bg-surface/60 px-3 py-1.5"
+          >
+            <span class="font-mono text-[11px] text-muted">available for backend work</span>
+          </div>
         </div>
 
         <h1
